@@ -609,6 +609,12 @@
       background: $primary;
       border-color: $primary;
       color: #fff;
+
+      &:hover:not(:disabled) {
+        background: $primary-dark;
+        border-color: $primary-dark;
+        color: #fff;
+      }
     }
   }
 
