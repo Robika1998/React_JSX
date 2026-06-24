@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useAppSelector } from "../../store/hooks";
 import Logo from "../common/Logo";
+import FavoritesIcon from "../common/FavoritesIcon";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,9 +37,6 @@ function Header() {
             onClick={closeMenu}
           >
             Favorites
-            {favoritesCount > 0 && (
-              <span className="header__badge">{favoritesCount}</span>
-            )}
           </NavLink>
           <a href="#about" className="header__link" onClick={closeMenu}>
             About
@@ -52,12 +50,10 @@ function Header() {
           <Link
             to="/favorites"
             className="header__fav-btn"
-            aria-label="Favorites"
+            aria-label={`Favorites${favoritesCount ? `, ${favoritesCount} items` : ""}`}
+            onClick={closeMenu}
           >
-            ♥
-            {favoritesCount > 0 && (
-              <span className="header__fav-badge">{favoritesCount}</span>
-            )}
+            <FavoritesIcon count={favoritesCount} />
           </Link>
           <div className="header__avatar" aria-hidden="true">
             <img src="https://i.pravatar.cc/40?img=12" alt="User profile" />

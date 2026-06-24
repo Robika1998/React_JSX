@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-import productsReducer from './slices/productsSlice'
-import filtersReducer from './slices/filtersSlice'
-import favoritesReducer from './slices/favoritesSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import productsReducer from "./slices/productsSlice";
+import filtersReducer from "./slices/filtersSlice";
+import favoritesReducer from "./slices/favoritesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -9,4 +9,4 @@ export const store = configureStore({
     filters: filtersReducer,
     favorites: favoritesReducer,
   },
-})
+});

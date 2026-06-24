@@ -1,3 +1,5 @@
+import Button from '../ui/Button'
+
 function ErrorMessage({ message, onRetry }) {
   return (
     <div className="error-message">
@@ -5,9 +7,7 @@ function ErrorMessage({ message, onRetry }) {
       <h3 className="error-message__title">Something went wrong</h3>
       <p className="error-message__text">{message}</p>
       {onRetry && (
-        <button type="button" className="btn btn--primary" onClick={onRetry}>
-          Try Again
-        </button>
+        <Button onClick={onRetry}>Try Again</Button>
       )}
     </div>
   )

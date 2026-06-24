@@ -12,6 +12,7 @@ import StarRating from "../components/common/StarRating";
 import SimilarProducts from "../components/product-details/SimilarProducts";
 import Loader from "../components/common/Loader";
 import ErrorMessage from "../components/common/ErrorMessage";
+import Button from "../components/ui/Button";
 
 function ProductDetailsPage() {
   const { id } = useParams();
@@ -112,12 +113,15 @@ function ProductDetailsPage() {
             </span>
             <h1 className="product-details__title">{selectedProduct.title}</h1>
 
-            <div className="product-details__rating">
-              <StarRating rating={selectedProduct.rating} size="lg" />
-              <span className="product-details__reviews">
-                ({reviewCount} reviews)
-              </span>
-            </div>
+            <StarRating
+              rating={selectedProduct.rating}
+              size="lg"
+              variant="inline"
+              reviewCount={
+                selectedProduct.reviews?.length ||
+                Math.floor(selectedProduct.rating * 30)
+              }
+            />
 
             <p className="product-details__price">
               {formatPrice(selectedProduct.price)}
@@ -167,15 +171,13 @@ function ProductDetailsPage() {
                 </button>
               </div>
 
-              <button
-                type="button"
-                className={`btn btn--primary btn--large ${
-                  isFavorite ? "btn--outline" : ""
-                }`}
+              <Button
+                variant={isFavorite ? "outline" : "primary"}
+                size="large"
                 onClick={handleToggleFavorite}
               >
                 {isFavorite ? "♥ Remove from Favorites" : "♡ Add to Favorites"}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -198,9 +200,9 @@ function ProductDetailsPage() {
         <section className="product-details__reviews">
           <div className="product-details__reviews-header">
             <h2>Reviews ({reviewCount})</h2>
-            <button type="button" className="btn btn--outline btn--small">
+            <Button variant="outline" size="small">
               Write a Review
-            </button>
+            </Button>
           </div>
 
           <div className="reviews-summary">

@@ -1,0 +1,127 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Button
+.btn {
+  @include button-base;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9rem;
+
+  &--primary {
+    background: $primary;
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+
+    &:hover:not(:disabled) {
+      background: $primary-light;
+    }
+  }
+
+  &--large {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    flex: 1;
+  }
+
+  &--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+// Input
+.ui-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  background: $bg-white;
+  color: $text-dark;
+  width: 100%;
+
+  &::placeholder {
+    color: $text-light;
+  }
+
+  &:focus {
+    border-color: $primary;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary, 0.15);
+  }
+}
+
+// Select
+.ui-select {
+  position: relative;
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0.65rem;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid $text-muted;
+    transform: translateY(-30%);
+    transition: transform 0.2s ease;
+    pointer-events: none;
+  }
+
+  &:has(select:open)::after {
+    transform: translateY(-70%) rotate(180deg);
+  }
+
+  &__control {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.75rem 1.5rem 0.75rem 1rem;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    background: $bg-white;
+    color: $text-dark;
+    cursor: pointer;
+    width: max-content;
+    max-width: 100%;
+
+    &:focus {
+      border-color: $primary;
+      outline: none;
+    }
+  }
+}
+
+// Search
+.ui-search {
+  display: flex;
+  flex: 1;
+  gap: $spacing-sm;
+
+  &__input {
+    flex: 1;
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+// Filter bar layout (uses ui-select inside)
+.filter-bar {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}

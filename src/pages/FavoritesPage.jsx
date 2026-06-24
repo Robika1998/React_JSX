@@ -1,9 +1,9 @@
-import { useAppSelector } from '../store/hooks'
-import FavoriteItem from '../components/favorites/FavoriteItem'
-import EmptyFavorites from '../components/favorites/EmptyFavorites'
+import { useAppSelector } from "../store/hooks";
+import FavoriteItem from "../components/favorites/FavoriteItem";
+import EmptyFavorites from "../components/favorites/EmptyFavorites";
 
 function FavoritesPage() {
-  const favorites = useAppSelector((state) => state.favorites.items)
+  const favorites = useAppSelector((state) => state.favorites.items);
 
   return (
     <div className="favorites-page">
@@ -12,7 +12,8 @@ function FavoritesPage() {
           <h1 className="favorites-page__title">My Favorites</h1>
           {favorites.length > 0 && (
             <p className="favorites-page__count">
-              You have {favorites.length} favorite product{favorites.length !== 1 ? 's' : ''}
+              You have {favorites.length} favorite product
+              {favorites.length !== 1 ? "s" : ""}
             </p>
           )}
         </div>
@@ -28,7 +29,7 @@ function FavoritesPage() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default FavoritesPage
+export default FavoritesPage;
