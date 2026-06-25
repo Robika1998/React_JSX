@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../../store/hooks'
-import { removeFavorite } from '../../store/slices/favoritesSlice'
-import { formatPrice, formatCategory } from '../../utils/filterProducts'
-import StarRating from '../common/StarRating'
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { removeFavorite } from "../../store/slices/favoritesSlice";
+import { formatPrice, formatCategory } from "../../utils/filterProducts";
+import StarRating from "../common/StarRating";
 
 function FavoriteItem({ product }) {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleRemove = () => {
-    dispatch(removeFavorite(product.id))
-  }
+    dispatch(removeFavorite(product.id));
+  };
 
   return (
     <article className="favorite-item">
@@ -32,7 +32,9 @@ function FavoriteItem({ product }) {
       </div>
 
       <div className="favorite-item__actions">
-        <span className="favorite-item__price">{formatPrice(product.price)}</span>
+        <span className="favorite-item__price">
+          {formatPrice(product.price)}
+        </span>
         <button
           type="button"
           className="favorite-item__remove"
@@ -43,7 +45,7 @@ function FavoriteItem({ product }) {
         </button>
       </div>
     </article>
-  )
+  );
 }
 
-export default FavoriteItem
+export default FavoriteItem;

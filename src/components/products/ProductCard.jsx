@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import { useAppSelector } from '../../store/hooks'
-import { formatPrice, formatCategory } from '../../utils/filterProducts'
-import StarRating from '../common/StarRating'
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
+import { formatPrice, formatCategory } from "../../utils/filterProducts";
+import StarRating from "../common/StarRating";
 
 function ProductCard({ product, showFavoriteBtn = true }) {
-  const favorites = useAppSelector((state) => state.favorites.items)
-  const isFavorite = favorites.some((item) => item.id === product.id)
+  const favorites = useAppSelector((state) => state.favorites.items);
+  const isFavorite = favorites.some((item) => item.id === product.id);
 
   return (
     <article className="product-card">
@@ -24,24 +24,28 @@ function ProductCard({ product, showFavoriteBtn = true }) {
         <Link to={`/product/${product.id}`} className="product-card__title">
           {product.title}
         </Link>
-        <span className="product-card__category">{formatCategory(product.category)}</span>
+        <span className="product-card__category">
+          {formatCategory(product.category)}
+        </span>
 
         <div className="product-card__footer">
-          <span className="product-card__price">{formatPrice(product.price)}</span>
+          <span className="product-card__price">
+            {formatPrice(product.price)}
+          </span>
           <StarRating rating={product.rating} />
         </div>
 
         {showFavoriteBtn && (
           <Link
             to={`/product/${product.id}`}
-            className={`product-card__btn ${isFavorite ? 'product-card__btn--active' : ''}`}
+            className={`product-card__btn ${isFavorite ? "product-card__btn--active" : ""}`}
           >
-            {isFavorite ? '♥ In Favorites' : 'View Details'}
+            {isFavorite ? "♥ In Favorites" : "View Details"}
           </Link>
         )}
       </div>
     </article>
-  )
+  );
 }
 
-export default ProductCard
+export default ProductCard;

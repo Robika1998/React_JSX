@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const API_BASE = "https://dummyjson.com";
+import { API_BASE } from "../../env";
 
 export const fetchProducts = async () => {
   const { data } = await axios.get(`${API_BASE}/products`, {

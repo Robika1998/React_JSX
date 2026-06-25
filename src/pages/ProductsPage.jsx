@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { loadProducts } from "../store/slices/productsSlice";
+import { loadProducts } from "../store/thunks/productsThunks";
 import {
   filterAndSortProducts,
   paginateProducts,
